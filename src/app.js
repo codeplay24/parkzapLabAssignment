@@ -1,4 +1,4 @@
-require('./database/mongo.js')
+//require('./database/mongo.js')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer')
 
 
 const app = express()
+const port = process.env.PORT || 3000
 const viewsPath =path.join(__dirname, './templates/views')
 const partialsPath = path.join(__dirname, './templates/partials')
 
@@ -68,5 +69,6 @@ app.get('/getDashboard', async(req,res)=>{
   res.render('dashboard', {userArr:users})
 })
 
-app.listen(3000)
-console.log('running');
+app.listen(port, ()=>{
+  console.log('running');
+})
