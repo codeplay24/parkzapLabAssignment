@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>User-form</title>
+    <style media="screen">
+      body{
+      background-color: rgb(122, 166, 121);
+      background-size:cover;
+      font-family: Arial;
+      }
+
+      .wrap{
+      border-radius: 20px;
+      margin:auto;
+      background: rgba(0, 0, 0, 0.8);
+      box-sizing: border-box;
+      padding: 40px;
+      color: #fff;
+      margin-top: 100px;
+      position: absolute;
+      right: 510px;
+      top: 100px;
+      width: 350px;
+      }
+
+      h2{
+      text-align: center;
+      }
+
+      input[type=text],input[type=password]{
+      width:100%;
+      box-sizing: border-box;
+      padding: 12px 5px;
+      background: rgba(0, 0, 0, 0.10);
+      outline:none;
+      border:none;
+      border-bottom: 1px dotted #fff;
+      color: #fff;
+      border-radius: 5px;
+      margin:5px;
+      font-weight: bold;
+
+      }
+
+      input[type=submit]{
+      width:100%;
+      box-sizing: border-box;
+      padding: 10px 0;
+      margin-top: 30px;
+      outline: none;
+      border:none;
+      background: #60adde;
+      opacity: 0.7;
+      border-radius: 20px;
+      font-size: 20px;
+      color: #fff;
+
+      }
+
+      input[type=submit]:hover{
+      background: #003366;
+      opacity:0.7;
+      }
+      .header{
+        position: absolute;
+        left: 450px;
+      }
+      .heading{
+        background-color: rgb(235, 169, 138);
+        padding: 30px;
+        border: solid 2px black;
+        width: 400px;
+        border-radius: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="heading">ParkzapLabs Assignment</h1>
+    </div>
+
+    <div class="wrap">
+      <form class="" action="/dashboard" method="post">
+        <input type="text" placeholder="Name" name="name" value="" id="name" required><br>
+        <input type="date" id="birthday" name="birthday"><br>
+        <input type="text" placeholder="E-mail" name="email" value="" id="email" required><br>
+        <input type="text" placeholder="Phone Number" name="phoneNumber" value="" id="" required><br>
+        <input type="submit" id="button" onclick="checkings()">
+      </form>
+    </div>
+
+    <script type="text/javascript">
+
+      const checkings = ()=>{
+        const nameText = document.getElementById('name')
+        const dateObj = document.getElementById('birthday')
+        const email = document.getElementById('email')
+        dobValidator(dateObj.value)
+        emailValidator(email.value)
+        nameValidator(nameText.value)
+      }
+      const dobValidator = function(dateObj){
+          var todayDate = new Date().toISOString().slice(0,10);
+          var cYear = parseInt(todayDate.split('-')[0])
+          var cMonth = parseInt(todayDate.split('-')[1])
+          var cDay = parseInt(todayDate.split('-')[2])
+          var dYear = parseInt(dateObj.split('-')[0])
+          var dMonth = parseInt(dateObj.split('-')[1])
+          var dDay = parseInt(dateObj.split('-')[2])
+          if(cYear-dYear<18){
+            alert('User have to be atleast 18 years old')
+            event.preventDefault()
+          }
+          if(cYear-dYear===18){
+            if(cMonth<dMonth){
+              alert('User have to be atleast 18 years old')
+              event.preventDefault()
+            }
+            if(cMonth===dMonth){
+              if(cDay<dDay){
+                alert('User have to be atleast 18 years old')
+                event.preventDefault()
+              }
+            }
+          }
+      }
+      const emailValidator = (mail)=> {
+        var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        if(!mail.match(mailformat)){
+          alert('invalid mail address')
+          event.preventDefault()
+        }
+      }
+
+      const nameValidator = (name)=>{
+        if(name===null || name===''){
+          alert('name can not be blank')
+          event.preventDefault()
+        }
+      }
+
+    </script>
+  </body>
+</html>
