@@ -1,4 +1,4 @@
-//require('./database/mongo.js')
+require('./database/mongo.js')
 const express = require('express')
 const exphbs = require('express-handlebars')
 const Handlebars = require('handlebars')
