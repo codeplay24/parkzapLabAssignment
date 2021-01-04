@@ -46,7 +46,7 @@ app.post('/dashboard', (req,res)=>{
       service:'gmail',
       auth:{
         user:'rajdeepsarkar1d@gmail.com',
-        pass: 'official2048'
+        pass: process.env.MAIL_PASSWORD||'official2048'
       }
     })
     var mailOptions = {
