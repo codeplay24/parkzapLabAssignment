@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node src/app.js"
+    "start": "node src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,5 +16,8 @@
     "mongoose": "^5.11.9",
     "nodemailer": "^6.4.17",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
   }
 }
