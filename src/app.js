@@ -28,7 +28,7 @@ app.get('/user-form', (req,res)=>{
   res.render('index')
 })
 
-app.post('/dashboard', (req,res)=>{
+app.post('/dashboard', async(req,res)=>{
   const number = req.body.phoneNumber
   var phoneno = /^\d{10}$/;
   if(!number.match(phoneno)){
@@ -41,7 +41,7 @@ app.post('/dashboard', (req,res)=>{
     phoneNumber:req.body.phoneNumber,
     dob:req.body.birthday
   })
-  user.save()
+  await user.save()
   const transporter = nodemailer.createTransport({
       service:'gmail',
       auth:{
